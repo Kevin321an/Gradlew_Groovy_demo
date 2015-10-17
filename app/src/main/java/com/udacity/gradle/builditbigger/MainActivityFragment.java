@@ -36,16 +36,6 @@ public class MainActivityFragment extends Fragment {
         mAdView.loadAd(adRequest);
 
         instructions=(Button)root.findViewById(R.id.tellJoke);
-       /* instructions.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });*/
-
-
-
-
-
 
 
         return root;

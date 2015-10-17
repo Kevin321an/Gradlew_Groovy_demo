@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,12 +8,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.Jokes;
+import com.udacity.gradle.builditbigger.asyncTask.AsyncTask_joke;
 
-import www.fanfan.pub.mylibrary.ImageActivity;
 
+public class MainActivity extends ActionBarActivity implements  com.udacity.gradle.builditbigger.asyncTask.AsyncTask_joke.mAsyncTaskListener{
 
-public class MainActivity extends ActionBarActivity {
-
+    private String joke;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,33 +34,35 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        System.out.print("kevin");
-
         //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-        return true;
-    }
+        if (id == R.id.action_settings) {
+            return true;
+        }
 
-    return super.onOptionsItemSelected(item);
-}
+        return super.onOptionsItemSelected(item);
+    }
 
     /*public void tellJoke(View view){
         Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
     }*/
 
-    public  void tellJokeButton(View view){
+    @Override
+    public void toResult(Object message) {
 
-        Jokes callJokeLibrary= new Jokes();
-
-        Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
-        //launchLibararyActivity();
-
-        Intent myIntent = new Intent(this, ImageActivity.class);
-        //Intent myIntent = new Intent(this, www.fanfan.pub.androidmodule.class);
-
-        startActivity(myIntent);
+        joke=(String)message;
     }
 
+    public void tellJokeButton(View view) {
+
+        Jokes callJokeLibrary = new Jokes();
+
+        Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
+
+        //Intent myIntent = new Intent(this, ImageActivity.class);
+        //startActivity(myIntent);
+        //new AsyncTask_joke().execute(new Pair<Context, String>(this, "Manfred"));
+        new AsyncTask_joke().execute();
+    }
 
 
 
