@@ -1,11 +1,16 @@
 package com.udacity.gradle.builditbigger;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.Jokes;
+
+import www.fanfan.pub.mylibrary.ImageActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -30,18 +35,34 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        System.out.print("kevin");
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    if (id == R.id.action_settings) {
+        return true;
     }
 
-    public void tellJoke(View view){
+    return super.onOptionsItemSelected(item);
+}
+
+    /*public void tellJoke(View view){
         Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+    }*/
+
+    public  void tellJokeButton(View view){
+
+        Jokes callJokeLibrary= new Jokes();
+
+        Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
+        //launchLibararyActivity();
+
+        Intent myIntent = new Intent(this, ImageActivity.class);
+        //Intent myIntent = new Intent(this, www.fanfan.pub.androidmodule.class);
+
+        startActivity(myIntent);
     }
+
+
 
 
 }
