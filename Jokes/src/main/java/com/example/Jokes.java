@@ -2,10 +2,8 @@ package com.example;
 
 public class Jokes {
 
-    public  String thisNotAJoke(){
-
+    static public String thisNotAJoke(){
        return "this is a really joke";
-
-
     }
+
 }

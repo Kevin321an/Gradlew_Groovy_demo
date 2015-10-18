@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.Jokes;
 import com.udacity.gradle.builditbigger.asyncTask.AsyncTask_joke;
 
 
@@ -54,14 +53,16 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
 
     public void tellJokeButton(View view) {
 
-        Jokes callJokeLibrary = new Jokes();
-
-        Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
+        //Jokes callJokeLibrary = new Jokes();
+        //Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
 
         //Intent myIntent = new Intent(this, ImageActivity.class);
         //startActivity(myIntent);
         //new AsyncTask_joke().execute(new Pair<Context, String>(this, "Manfred"));
-        new AsyncTask_joke().execute();
+        new AsyncTask_joke(this).execute();
+
+
+        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
 
 

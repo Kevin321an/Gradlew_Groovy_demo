@@ -6,6 +6,8 @@
 
 package com.example.FM.myapplication.backend;
 
+
+import com.example.Jokes;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -36,5 +38,13 @@ public class MyEndpoint {
 
         return response;
     }
+
+    @ApiMethod(name = "thisNotAJoke")
+    public MyBean thisNotAJoke(){
+        MyBean response = new MyBean();
+        response.setData(Jokes.thisNotAJoke());
+        return response;
+    }
+
 
 }
