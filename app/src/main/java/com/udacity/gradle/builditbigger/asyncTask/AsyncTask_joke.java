@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger.asyncTask;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.fm.myapplication.backend.myApi.MyApi;
@@ -10,7 +9,6 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Created by FM on 10/17/2015.
@@ -18,15 +16,15 @@ import java.util.Objects;
 public class AsyncTask_joke extends AsyncTask<Void,Void, String> {
 
     private static MyApi myApiService = null;
-    private Context context;
-    private Objects x;
+
+    private final String URL = "https://build-it-bigger-1101.appspot.com/_ah/api/";
 
     @Override
     protected String doInBackground(Void... params) {
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    .setRootUrl("https://build-it-bigger-1101.appspot.com/_ah/api/")
+                    .setRootUrl(URL)
                     //.setRootUrl("https://built-it-bigger.appspot.com/_ah/api/")
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
@@ -38,8 +36,6 @@ public class AsyncTask_joke extends AsyncTask<Void,Void, String> {
             myApiService = builder.build();
         }
 
-       /* context = params[0].first;
-        String name = params[0].second;*/
 
         try {
             String str= myApiService.thisNotAJoke().execute().getData();

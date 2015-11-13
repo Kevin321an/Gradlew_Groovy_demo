@@ -1,22 +1,27 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.udacity.gradle.builditbigger.asyncTask.AsyncTask_joke;
+
+import www.fanfan.pub.mylibrary.ImageActivity;
 
 
 public class MainActivity extends ActionBarActivity implements  com.udacity.gradle.builditbigger.asyncTask.AsyncTask_joke.mAsyncTaskListener{
 
     private String joke;
+    final public String KEY_JOKE = "JOKE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new AsyncTask_joke(this).execute();
     }
 
 
@@ -41,9 +46,6 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
         return super.onOptionsItemSelected(item);
     }
 
-    /*public void tellJoke(View view){
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
-    }*/
 
     @Override
     public void toResult(Object message) {
@@ -52,17 +54,13 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
     }
 
     public void tellJokeButton(View view) {
+        Intent myIntent = new Intent(this, ImageActivity.class);
 
-        //Jokes callJokeLibrary = new Jokes();
-        //Toast.makeText(this, callJokeLibrary.thisNotAJoke(), Toast.LENGTH_SHORT).show();
+        //wrap the joke into the intent then delivery to other class
+        myIntent.putExtra(KEY_JOKE,joke);
+        startActivity(myIntent);
 
-        //Intent myIntent = new Intent(this, ImageActivity.class);
-        //startActivity(myIntent);
-        //new AsyncTask_joke().execute(new Pair<Context, String>(this, "Manfred"));
-        new AsyncTask_joke(this).execute();
-
-
-        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
 
 

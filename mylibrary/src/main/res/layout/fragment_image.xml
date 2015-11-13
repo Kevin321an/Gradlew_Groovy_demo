@@ -9,7 +9,7 @@
     tools:context=".ImageActivityFragment">
 
     <TextView
-        android:id="@+id/libraryWelcomeTextView"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/library_welcome_text" />
@@ -17,7 +17,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/libraryWelcomeTextView"
+        android:layout_below="@id/textView"
         android:src="@drawable/gradlelogo" />
 
 </RelativeLayout>
