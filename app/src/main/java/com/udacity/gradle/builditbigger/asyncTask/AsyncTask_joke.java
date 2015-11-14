@@ -36,7 +36,6 @@ public class AsyncTask_joke extends AsyncTask<Void,Void, String> {
             myApiService = builder.build();
         }
 
-
         try {
             String str= myApiService.thisNotAJoke().execute().getData();
             //String str=  myApiService.getJokes().execute().getData();
@@ -52,15 +51,12 @@ public class AsyncTask_joke extends AsyncTask<Void,Void, String> {
         super();
         //Initialization the mSyncListener when the new Object created
         this.mSyncListener=mSyncListener;
-
     }
 
     @Override
     protected void onPostExecute(String result) {
         //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-
         mSyncListener.toResult(result);
-
     }
 
     public interface mAsyncTaskListener{

@@ -1,15 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 
 /**
@@ -26,7 +22,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        AdView mAdView = (AdView) root.findViewById(R.id.adView);
+        /*AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
@@ -35,21 +31,9 @@ public class MainActivityFragment extends Fragment {
                 .build();
         mAdView.loadAd(adRequest);
 
-        instructions=(Button)root.findViewById(R.id.tellJoke);
+        instructions=(Button)root.findViewById(R.id.tellJoke);*/
 
 
         return root;
-    }
-    public void launchLibraryActivity(View view){
-
-    }
-
-
-
-
-    public void launchLibararyActivity(){
-        Intent mIntent = new Intent(getActivity(), MainActivity.class);
-        startActivity(mIntent);
-
     }
 }
