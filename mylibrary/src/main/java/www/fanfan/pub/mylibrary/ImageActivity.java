@@ -37,8 +37,5 @@ public class ImageActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
- /*   public void launchLibraryActivity(View view){
-        Intent myIntent = new Intent(this, ImageActivity.class);
-        startActivity(myIntent);
-    }*/
+
 }

@@ -21,13 +21,10 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
     private String joke;
     final public String KEY_JOKE = "JOKE";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         AdView mAdView = (AdView)findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
@@ -37,38 +34,11 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
-
-
-
         new AsyncTask_joke(this).execute();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
     @Override
     public void toResult(Object message) {
-
         joke=(String)message;
     }
 
@@ -78,7 +48,6 @@ public class MainActivity extends ActionBarActivity implements  com.udacity.grad
         //wrap the joke into the intent then delivery to other class
         myIntent.putExtra(KEY_JOKE, joke);
         startActivity(myIntent);
-
         //Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
     }
 

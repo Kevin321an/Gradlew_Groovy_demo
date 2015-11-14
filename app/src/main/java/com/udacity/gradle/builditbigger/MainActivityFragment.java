@@ -33,7 +33,6 @@ public class MainActivityFragment extends Fragment {
 
         instructions=(Button)root.findViewById(R.id.tellJoke);*/
 
-
         return root;
     }
 }
